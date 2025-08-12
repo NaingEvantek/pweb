@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default function ProtectedRoute({ children }: Props) {
-  const eqms_key = localStorage.getItem("eqms-key");
+  const eqms_key = localStorage.getItem("eqms_key");
   if (!eqms_key) {
     console.log("eqms_key null");
     return <Navigate to="/Landing" replace />;

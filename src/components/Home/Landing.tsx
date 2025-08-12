@@ -21,7 +21,7 @@ const Landing = () => {
 
   return (
     <div className="d-flex vh-100 justify-content-center align-items-center">
-      <div className="text-center" style={{ width: "250px" }}>
+      <div className="text-center" style={{ width: "400px" }}>
         <h1 className="mb-4">PWeb Online</h1>
 
         <button
