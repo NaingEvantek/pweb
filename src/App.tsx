@@ -2,17 +2,17 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Landing from "./components/Home/Landing";
 import RequestOtp from "./components/OTP/RequestOtp";
 import SubmitOtp from "./components/OTP/SubmitOtp";
-import AppointmentQ from "./components/Appointment/AppointmentQ";
 import ManageAppointment from "./components/Appointment/ManageAppointment";
 import GetQNumber from "./components/WalkIn/GetQNumber";
 import ManageQNumber from "./components/WalkIn/ManageQNumber";
 import ProtectedRoute from "./components/ProtectingRoute/ProtectedRoute";
 import Login from "./components/Auth/Login";
 import ProtectedRestAPIRoute from "./components/ProtectingRoute/ProtectedRestAPIRoute";
+import Appointment from "./components/Appointment/Appointment";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/pweb">
       <Routes>
         <Route path="/" element={<Login />} />
         <Route
@@ -37,7 +37,7 @@ function App() {
           element={
             <ProtectedRoute>
               <ProtectedRestAPIRoute>
-                <AppointmentQ />
+                <Appointment />
               </ProtectedRestAPIRoute>
             </ProtectedRoute>
           }

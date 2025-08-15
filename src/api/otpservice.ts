@@ -18,7 +18,7 @@ export interface RequestOtpResponse {
     const token = localStorage.getItem('Authorization');
     const response = await api.post<RequestOtpResponse>(
       `/GetOTP`,{ 
-        HandphoneOrEmail: phoneNumber 
+        "Mobile": phoneNumber 
       },{
         headers: {
           'Authorization': `Bearer ${token}`, 
@@ -33,7 +33,7 @@ export interface RequestOtpResponse {
   export const submitOtp = async (phoneNumber: string, otp: string):Promise<SubmitOTPResult> => {
     const token = localStorage.getItem('Authorization');
     const response = await api.post<SubmitOTPResult>(`/SubmitOTP`, {
-      "HandphoneOrEmail":phoneNumber,
+      "Mobile":phoneNumber,
       "otpSubmitted":otp,
     },{
       headers: {
@@ -42,5 +42,22 @@ export interface RequestOtpResponse {
       }
     }
   );
+    return response.data;
+  };
+
+  export const DecryptOTP = async (mobile: string,email:string): Promise<string>  => {
+    const token = localStorage.getItem('Authorization');
+    const response = await api.post<string>(
+      `/DecryptOTP`,{ 
+        "Mobile": mobile,
+        "Email":email 
+      },{
+        headers: {
+          'Authorization': `Bearer ${token}`, 
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+   
     return response.data;
   };

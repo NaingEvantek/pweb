@@ -399,7 +399,8 @@ export default function AppointmentQ() {
         setSelectedBranch(null);
         setDateList([]);
         break;
-      case "serviceTab" || "successTab":
+      case "serviceTab":
+      case "successTab":
         navigate("/landing");
         break;
       default:

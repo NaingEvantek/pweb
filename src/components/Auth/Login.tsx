@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [clientId, setClientId] = useState("");
-  const [clientSecret, setClientSecret] = useState("");
+  const navigate = useNavigate();
+
+  const [clientId, setClientId] = useState("User");
+  const [clientSecret, setClientSecret] = useState("User@123");
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -33,7 +36,7 @@ const Login = () => {
       console.log(response.data);
       console.log("Access Token:", response.data.access_token);
 
-      window.location.href = "/landing";
+      navigate("/landing");
     } catch (err) {
       setError("Invalid credentials or OAuth server error.");
     }

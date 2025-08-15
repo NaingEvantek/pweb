@@ -4,6 +4,7 @@ import {
   submitOtp,
   type SubmitOTPResult,
   getApiErrorMessage,
+  DecryptOTP,
 } from "../../api/otpservice";
 
 interface LocationState {
@@ -25,6 +26,22 @@ export default function SubmitOtp() {
       navigate("/landing", { replace: true });
     }
   }, [phone, navigate]);
+
+  useEffect(() => {
+    const fetchOtp = async () => {
+      try {
+        if (phone) {
+          const result = await DecryptOTP(phone, "");
+          console.log(result);
+          setOtp(result);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchOtp();
+  }, [phone]);
 
   const handleSubmit = async () => {
     if (!otp.trim()) {
